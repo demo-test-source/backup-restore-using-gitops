@@ -1,0 +1,117 @@
+﻿apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: hasan-oadp-demo-1
+  namespace: openshift-adp
+spec:
+  defaultVolumesToRestic: false
+  defaultVolumesToFsBackup: false
+  orLabelSelectors:
+    - matchExpressions:
+        - key: backup.integration.ibm.com/component
+          operator: In
+          values:
+            - catalogsource
+            - operatorgroup
+            - subscription
+            - assetrepository
+            - platformnavigator
+            - integrationassembly
+            - messagingserver
+            - messagingqueue
+            - messagingchannel
+            - messaginguser
+            - validatingadmissionpolicy
+            - validatingadmissionpolicybinding
+            - commonservice
+            - secret
+            - configmap
+            - namespace
+    - matchExpressions:
+        - key: backup.apiconnect.ibm.com/component
+          operator: In
+          values:
+            - catalogsource
+            - operatorgroup
+            - subscription
+            - api
+            - product
+            - apiconnectcluster
+            - portalcluster
+            - analyticscluster
+            - managementcluster
+            - gatewaycluster
+            - secret
+            - configmap
+    - matchExpressions:
+        - key: backup.datapower.ibm.com/component
+          operator: In
+          values:
+            - catalogsource
+            - operatorgroup
+            - subscription
+            - datapowerservice
+            - secret
+            - configmap
+    - matchExpressions:
+        - key: backup.appconnect.ibm.com/component
+          operator: In
+          values:
+            - catalogsource
+            - operatorgroup
+            - subscription
+            - configuration
+            - dashboard
+            - designerauthoring
+            - integrationruntime
+            - integrationserver
+            - switchserver
+            - secret
+            - configmap
+    - matchExpressions:
+        - key: backup.mq.ibm.com/component
+          operator: In
+          values:
+            - catalogsource
+            - operatorgroup
+            - subscription
+            - queuemanager
+            - secret
+            - configmap
+    - matchExpressions:
+        - key: backup.eventstreams.ibm.com/component
+          operator: In
+          values:
+            - catalogsource
+            - operatorgroup
+            - subscription
+            - eventstreams
+            - kafkaconnect
+            - kafkatopic
+            - kafkauser
+            - kafkabridge
+            - kafkaconnector
+            - kafkarebalance
+            - secret
+            - configmap
+    - matchExpressions:
+        - key: backup.events.ibm.com/component
+          operator: In
+          values:
+            - catalogsource
+            - operatorgroup
+            - subscription
+            - eventgateway
+    - matchExpressions:
+        - key: foundationservices.cloudpak.ibm.com
+          operator: In
+          values:
+            - keycloak
+  csiSnapshotTimeout: 10m0s
+  ttl: 720h0m0s
+  itemOperationTimeout: 4h0m0s
+  storageLocation: giacomo-sample-1
+  includeClusterResources: true
+  includedNamespaces:
+    - '*'
+  snapshotMoveData: false

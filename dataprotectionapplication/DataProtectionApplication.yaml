@@ -1,0 +1,36 @@
+apiVersion: oadp.openshift.io/v1alpha1
+kind: DataProtectionApplication
+metadata:
+  name: giacomo-sample
+  namespace: openshift-adp
+spec:
+  backupLocations:
+    - velero:
+        config:
+          insecureSkipTLSVerify: 'true'
+          region: us-south
+          s3ForcePathStyle: 'true'
+          s3Url: 'https://s3.us-south.cloud-object-storage.appdomain.cloud'
+        credential:
+          key: cloud
+          name: cloud-credentials
+        default: true
+        objectStorage:
+          bucket: giacomo-test
+          prefix: giacomo
+        provider: aws
+  configuration:
+    restic:
+      enable: true
+    velero:
+      customPlugins:
+        - image: >-
+            cp.icr.io/cp/appc/acecc-velero-plugin-prod@sha256:146e94e3419d0497d0a641b6dd615a69a4efde290781041db2a639862de73926
+          name: app-connect
+        - image: >-
+            cp.icr.io/cp/icp4i/ar-velero-plugin:1.6.0-2023-12-05-0925-7f53ade0@sha256:0926ee19e22f7ce454dafb168b228ee04294954fc7fee2a99e1ce045313febb7
+          name: integration
+      defaultPlugins:
+        - openshift
+        - aws
+      logLevel: debug
