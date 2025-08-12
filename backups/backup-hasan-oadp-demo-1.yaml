@@ -1,7 +1,7 @@
 ﻿apiVersion: velero.io/v1
 kind: Backup
 metadata:
-  name: hasan-oadp-demo-1
+  name: hasan-oadp-demo-2
   namespace: openshift-adp
 spec:
   defaultVolumesToRestic: false
