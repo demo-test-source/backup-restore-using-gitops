@@ -1,10 +1,13 @@
 apiVersion: velero.io/v1
 kind: Restore
 metadata:
-  name: hasan-oadp-demo-2-restore
+  generateName: hasan-oadp-demo-oadp-ns- # So that we don't have to delete the old restores
   namespace: openshift-adp
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    restore.trigger: "v1"                 # bump to v2/v3 to trigger re-apply in Git workflows
 spec:
-  backupName: hasan-oadp-demo-2
+  backupName: hasan-oadp-demo-oadp-ns-1
   includeClusterResources: true
   existingResourcePolicy: update
   restorePVs: true
