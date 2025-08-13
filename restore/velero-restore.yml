@@ -6,18 +6,13 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     restore.trigger: "v1"                 # bump to v2/v3 to trigger re-apply in Git workflows
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   backupName: hasan-oadp-demo-oadp-ns-1
   includeClusterResources: true
   existingResourcePolicy: update
   restorePVs: true
-  restoreStatus:
-    includedResources:
-    - apis.apiconnect.ibm.com
-    - products.apiconnect.ibm.com
-    - integrationkeycloakclients.keycloak.integration.ibm.com
-    - integrationkeycloakusers.keycloak.integration.ibm.com
-  hooks: {}
   includedNamespaces:
   - '*'
   itemOperationTimeout: 1h0m0s
