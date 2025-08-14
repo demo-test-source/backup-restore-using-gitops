@@ -1,0 +1,26 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: argocd-manage-oadp
+  namespace: openshift-adp
+rules:
+- apiGroups: ["oadp.openshift.io"]
+  resources: ["dataprotectionapplications"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["velero.io"]
+  resources: ["backupstoragelocations","volumesnapshotlocations","backups","restores","schedules"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argocd-manage-oadp
+  namespace: openshift-adp
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: argocd-manage-oadp

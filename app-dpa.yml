@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: oadp-dpa
+  name: argocd-app-dpa
   namespace: openshift-gitops
 spec:
   project: default
@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: openshift-adp
   source:
-    repoURL: https://github.com/demo-test-source/demo-source.git
+    repoURL: https://github.com/demo-test-source/backup-restore-using-gitops.git
     targetRevision: main
     path: dataprotectionapplication
   syncPolicy:
