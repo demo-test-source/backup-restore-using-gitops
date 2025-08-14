@@ -9,7 +9,7 @@ metadata:
     argocd.argoproj.io/hook: Sync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
-  backupName: hasan-oadp-demo-oadp-ns-1
+  backupName: hasan-oadp-demo-oadp-ns-2
   includeClusterResources: true
   existingResourcePolicy: update
   restorePVs: true
