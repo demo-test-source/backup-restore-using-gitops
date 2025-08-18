@@ -5,7 +5,7 @@ metadata:
   namespace: openshift-adp
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-    restore.trigger: "v1"                 # bump to v2/v3 to trigger re-apply in Git workflows
+    restore.trigger: "v2"                 # bump to v2/v3 to trigger re-apply in Git workflows
     argocd.argoproj.io/hook: Sync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
