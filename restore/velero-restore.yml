@@ -1,7 +1,7 @@
 apiVersion: velero.io/v1
 kind: Restore
 metadata:
-  generateName: hasan-oadp-demo-oadp-ns-1 # So that we don't have to delete the old restores
+  generateName: hasan-oadp-demo-oadp-ns-2 # So that we don't have to delete the old restores
   namespace: openshift-adp
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
