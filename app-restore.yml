@@ -13,7 +13,8 @@ spec:
     repoURL: https://github.com/demo-test-source/backup-restore-using-gitops.git   # <-- set your repo URL
     targetRevision: main                  # <-- set your branch
     path: restore  # repo root (includes restore/, backups/, dataprotectionapplication/)
-    directory: {}                             
+    directory:
+      recurse: true                            
   syncPolicy:
     automated:
       prune: true
