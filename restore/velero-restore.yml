@@ -4,10 +4,8 @@ metadata:
   name: hasan-oadp-demo-oadp-ns-3 # So that we don't have to delete the old restores
   namespace: openshift-adp
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-    restore.trigger: "v2"                 # bump to v2/v3 to trigger re-apply in Git workflows
-    argocd.argoproj.io/hook: Sync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    restore.trigger: v3  # bump this to force re-run under Auto-Sync
 spec:
   backupName: hasan-oadp-demo-oadp-ns-2
   includeClusterResources: true
