@@ -5,9 +5,9 @@ metadata:
   namespace: openshift-adp
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    restore.trigger: v3  # bump this to force re-run under Auto-Sync
+    restore.trigger: v1  # bump this to force re-run under Auto-Sync
 spec:
-  backupName: hasan-oadp-demo-oadp-ns-2
+  backupName: hasan-backup2
   includeClusterResources: true
   existingResourcePolicy: update
   restorePVs: true
